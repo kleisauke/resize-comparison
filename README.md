@@ -19,7 +19,7 @@ See [output/](output) directory.
 **Notes**
 
 - The output images were produced with the vector path disabled (due to [libvips/libvips#1518](https://github.com/libvips/libvips/issues/1518)).
-- The **VIPS after** result is based upon the [`issue-512`](https://github.com/kleisauke/libvips/tree/issue-512) branch.
+- The **VIPS after** result is based upon the [`issue-1512`](https://github.com/kleisauke/libvips/tree/issue-1512) branch.
 - The 8x versions are used for comparison.
 
 ### Pillow reduce() vs VIPS shrink()
