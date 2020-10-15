@@ -10,11 +10,14 @@ G_MESSAGES_DEBUG=all python3 test-resize.py input/radial.rgb.png
 
 # Disable the vector path
 VIPS_NOVECTOR=1 python3 test-resize.py input/radial.rgb.png
+
+# ResampleScope
+./resamplescope.sh
 ```
 
 See [output/](output) directory.
 
-## Output
+## Output radial.rgb.png
 
 **Notes**
 
@@ -52,3 +55,51 @@ See [output/](output) directory.
 
 - The vector path currently does not have the same precision as the C path (see [libvips/libvips#1518](https://github.com/libvips/libvips/issues/1518)).
 - `vips_shrink()` matches the output of Pillow, should `vips_reduce()` do the same?
+
+## Output ResampleScope
+
+**Notes**
+
+- The **VIPS after** result is based upon pull request [libvips/libvips#1769](https://github.com/libvips/libvips/pull/1769).
+
+### magick box vs VIPS nearest
+
+| magick | VIPS before | VIPS after |
+| :---: |  :---: |  :---: |
+| ![pd_magick_box-out.png](output/pd_magick_box-out.png) | ![pd_vips_nearest-out.png](output/pd_vips_nearest-out.png) | ![pd_vips_nearest-out.png](output-patch/pd_vips_nearest-out.png) |
+| | Identical to magick | Missing +0.5 shift |
+
+### magick triangle vs VIPS linear
+
+| magick | VIPS before | VIPS after |
+| :---: |  :---: |  :---: |
+| ![pd_magick_triangle-out.png](output/pd_magick_triangle-out.png) | ![pd_vips_linear-out.png](output/pd_vips_linear-out.png) | ![pd_vips_linear-out.png](output-patch/pd_vips_linear-out.png) |
+| | Precision / rounding error | Identical to previous image |
+
+### magick catrom vs VIPS cubic
+
+| magick | VIPS before | VIPS after |
+| :---: |  :---: |  :---: |
+| ![pd_magick_catrom-out.png](output/pd_magick_catrom-out.png) | ![pd_vips_cubic-out.png](output/pd_vips_cubic-out.png) | ![pd_vips_cubic-out.png](output-patch/pd_vips_cubic-out.png) |
+| | Precision / rounding error | Identical to previous image |
+
+### magick mitchell vs VIPS mitchell
+
+| magick | VIPS before | VIPS after |
+| :---: |  :---: |  :---: |
+| ![pd_magick_mitchell-out.png](output/pd_magick_mitchell-out.png) | ![pd_vips_mitchell-out.png](output/pd_vips_mitchell-out.png) | ![pd_vips_mitchell-out.png](output-patch/pd_vips_mitchell-out.png) |
+| | Precision / rounding error | Identical to previous image |
+
+### magick lanczos2 vs VIPS lanczos2
+
+| magick | VIPS before | VIPS after |
+| :---: |  :---: |  :---: |
+| ![pd_magick_lanczos2-out.png](output/pd_magick_lanczos2-out.png) | ![pd_vips_lanczos2-out.png](output/pd_vips_lanczos2-out.png) | ![pd_vips_lanczos2-out.png](output-patch/pd_vips_lanczos2-out.png) |
+| | Precision / rounding error | Identical to previous image |
+
+### magick lanczos vs VIPS lanczos3
+
+| magick | VIPS before | VIPS after |
+| :---: |  :---: |  :---: |
+| ![pd_magick_lanczos-out.png](output/pd_magick_lanczos-out.png) | ![pd_vips_lanczos3-out.png](output/pd_vips_lanczos3-out.png) | ![pd_vips_lanczos3-out.png](output-patch/pd_vips_lanczos3-out.png) |
+| | Precision / rounding error | Identical to previous image |
