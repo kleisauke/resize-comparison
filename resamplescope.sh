@@ -28,3 +28,12 @@ for i in "${!vips_kernels[@]}"; do
   ./rscope -name "$kernel resize with libvips" -name2 "$filter resize with ImageMagick" -nologo \
     pd_vips_$kernel.png pd_magick_$filter.png ../output-compare/magick-vips-$kernel-out.png
 done
+
+python3 ../pillow-resamplescope.py
+
+pillow_filters=(nearest box bilinear hamming bicubic lanczos)
+for i in "${!pillow_filters[@]}"; do 
+  filter="${pillow_filters[$i]}"
+
+  ./rscope -name "$filter resize with Pillow" -nologo pd_pillow_$filter.png ../output/pd_pillow_$filter-out.png
+done
