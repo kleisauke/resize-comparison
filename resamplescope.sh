@@ -7,6 +7,7 @@ else
   git clone https://github.com/jsummers/resamplescope.git
   cd resamplescope && make
   ./rscope -gen
+  ./rscope -gen -r
 fi
 
 magick_filters=(box triangle catrom mitchell lanczos2 lanczos)
@@ -17,8 +18,12 @@ done
 
 vips_kernels=(nearest linear cubic mitchell lanczos2 lanczos3)
 for kernel in "${vips_kernels[@]}"; do
-  vips resize pd.png pd_vips_$kernel.png 0.996409336 --vscale 1.0 --kernel $kernel
-  ./rscope -name "$kernel resize with libvips" -nologo pd_vips_$kernel.png ../output-patch/pd_vips_$kernel-out.png
+  vips reduceh pd.png pd_vips_$kernel.png 1.003603604 --kernel $kernel
+  vips reducev pdr.png pdr_vips_$kernel.png 1.003603604 --kernel $kernel --vips-novector
+  vips reducev pdr.png pdr_vips_vector_$kernel.png 1.003603604 --kernel $kernel
+  ./rscope -name "$kernel reduceh with libvips" -nologo pd_vips_$kernel.png ../output-patch/pd_vips_$kernel-out.png
+  ./rscope -name "$kernel reducev with libvips" -nologo -r pdr_vips_$kernel.png ../output-patch/pdr_vips_$kernel-out.png
+  ./rscope -name "$kernel reducev with libvips (vector path)" -nologo -r pdr_vips_vector_$kernel.png ../output-patch/pdr_vips_vector_$kernel-out.png
 done
 
 for i in "${!vips_kernels[@]}"; do 
