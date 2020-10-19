@@ -74,32 +74,32 @@ See [output/](output) directory.
 | magick | VIPS before | VIPS after |
 | :---: |  :---: |  :---: |
 | ![pd_magick_triangle-out.png](output/pd_magick_triangle-out.png) | ![pd_vips_linear-out.png](output/pd_vips_linear-out.png) | ![pd_vips_linear-out.png](output-patch/pd_vips_linear-out.png) |
-| | Precision / rounding error | Precision error(?) |
+| | Rounding error | |
 
 ### magick catrom vs VIPS cubic
 
 | magick | VIPS before | VIPS after |
 | :---: |  :---: |  :---: |
 | ![pd_magick_catrom-out.png](output/pd_magick_catrom-out.png) | ![pd_vips_cubic-out.png](output/pd_vips_cubic-out.png) | ![pd_vips_cubic-out.png](output-patch/pd_vips_cubic-out.png) |
-| | Precision / rounding error | Precision error(?) |
+| | Rounding error | |
 
 ### magick mitchell vs VIPS mitchell
 
 | magick | VIPS before | VIPS after |
 | :---: |  :---: |  :---: |
 | ![pd_magick_mitchell-out.png](output/pd_magick_mitchell-out.png) | ![pd_vips_mitchell-out.png](output/pd_vips_mitchell-out.png) | ![pd_vips_mitchell-out.png](output-patch/pd_vips_mitchell-out.png) |
-| | Precision / rounding error | Precision error(?) |
+| | Rounding error | |
 
 ### magick lanczos2 vs VIPS lanczos2
 
 | magick | VIPS before | VIPS after |
 | :---: |  :---: |  :---: |
 | ![pd_magick_lanczos2-out.png](output/pd_magick_lanczos2-out.png) | ![pd_vips_lanczos2-out.png](output/pd_vips_lanczos2-out.png) | ![pd_vips_lanczos2-out.png](output-patch/pd_vips_lanczos2-out.png) |
-| | Precision / rounding error | Precision error(?) |
+| | Rounding error | |
 
 ### magick lanczos vs VIPS lanczos3
 
 | magick | VIPS before | VIPS after |
 | :---: |  :---: |  :---: |
 | ![pd_magick_lanczos-out.png](output/pd_magick_lanczos-out.png) | ![pd_vips_lanczos3-out.png](output/pd_vips_lanczos3-out.png) | ![pd_vips_lanczos3-out.png](output-patch/pd_vips_lanczos3-out.png) |
-| | Precision / rounding error | Precision error(?) |
+| | Rounding error | |
