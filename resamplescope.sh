@@ -16,14 +16,18 @@ for filter in "${magick_filters[@]}"; do
   ./rscope -name "$filter resize with ImageMagick" -nologo pd_magick_$filter.png ../output/pd_magick_$filter-out.png
 done
 
+vips cast pdr.png pdr.v uint
+
 vips_kernels=(nearest linear cubic mitchell lanczos2 lanczos3)
 for kernel in "${vips_kernels[@]}"; do
-  vips reduceh pd.png pd_vips_$kernel.png 1.003603604 --kernel $kernel
-  vips reducev pdr.png pdr_vips_$kernel.png 1.003603604 --kernel $kernel --vips-novector
-  vips reducev pdr.png pdr_vips_vector_$kernel.png 1.003603604 --kernel $kernel
-  ./rscope -name "$kernel reduceh with libvips" -nologo pd_vips_$kernel.png ../output-patch/pd_vips_$kernel-out.png
-  ./rscope -name "$kernel reducev with libvips" -nologo -r pdr_vips_$kernel.png ../output-patch/pdr_vips_$kernel-out.png
-  ./rscope -name "$kernel reducev with libvips (vector path)" -nologo -r pdr_vips_vector_$kernel.png ../output-patch/pdr_vips_vector_$kernel-out.png
+  #vips reduceh pd.png pd_vips_$kernel.png 1.003603604 --kernel $kernel
+  #vips reducev pdr.png pdr_vips_$kernel.png 1.003603604 --kernel $kernel --vips-novector
+  #vips reducev pdr.png pdr_vips_orc_$kernel.png 1.003603604 --kernel $kernel
+  vips reducev pdr.v pdr_vips_simd_$kernel.png 1.003603604 --kernel $kernel
+  #./rscope -name "$kernel reduceh with libvips" -nologo pd_vips_$kernel.png ../output-patch/pd_vips_$kernel-out.png
+  #./rscope -name "$kernel reducev with libvips" -nologo -r pdr_vips_$kernel.png ../output-patch/pdr_vips_$kernel-out.png
+  #./rscope -name "$kernel reducev with libvips (orc path)" -nologo -r pdr_vips_orc_$kernel.png ../output-patch/pdr_vips_orc_$kernel-out.png
+  ./rscope -name "$kernel reducev with libvips (simd path)" -nologo -r pdr_vips_simd_$kernel.png ../output-patch/pdr_vips_simd_$kernel-out.png
 done
 
 for i in "${!vips_kernels[@]}"; do 
