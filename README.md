@@ -11,6 +11,9 @@ G_MESSAGES_DEBUG=all python3 test-resize.py input/radial.rgb.png
 # Disable the vector path
 VIPS_NOVECTOR=1 python3 test-resize.py input/radial.rgb.png
 
+# Disable the SIMD path
+VIPS_SIMD=0 python3 test-resize.py input/radial.rgb.png
+
 # ResampleScope
 ./resamplescope.sh
 ```
