@@ -16,7 +16,7 @@ for scale in [8, 9.4, 16]:
         ('reduce', lambda im, scale: im.reduce(scale, scale)),
         ('resize', lambda im, scale: im.resize(1 / scale, vscale=1 / scale)),
     ]:
-        fname = f'output-patch/{scale}x_vips_{method}.png'
+        fname = f'output/{scale}x_vips_{method}.png'
         call(im, scale).write_to_file(fname)
 
         time = min(timeit.repeat(

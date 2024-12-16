@@ -10,20 +10,21 @@ else
   ./rscope -gen -r
 fi
 
-magick_filters=(box triangle catrom mitchell lanczos2 lanczos)
+magick_filters=(box triangle catrom mitchell lanczos2 lanczos magickernelsharp2013 magickernelsharp2021)
 for filter in "${magick_filters[@]}"; do
-  convert pd.png -filter $filter -resize '555x275!' pd_magick_$filter.png
+  magick pd.png -filter $filter -resize '555x275!' pd_magick_$filter.png
   ./rscope -name "$filter resize with ImageMagick" -nologo pd_magick_$filter.png ../output/pd_magick_$filter-out.png
 done
 
-vips_kernels=(nearest linear cubic mitchell lanczos2 lanczos3)
+vips cast pd.png pd.v double
+vips cast pdr.png pdr.v double
+
+vips_kernels=(nearest linear cubic mitchell lanczos2 lanczos3 mks2013 mks2021)
 for kernel in "${vips_kernels[@]}"; do
-  vips reduceh pd.png pd_vips_$kernel.png 1.003603604 --kernel $kernel
-  vips reducev pdr.png pdr_vips_$kernel.png 1.003603604 --kernel $kernel --vips-novector
-  vips reducev pdr.png pdr_vips_vector_$kernel.png 1.003603604 --kernel $kernel
-  ./rscope -name "$kernel reduceh with libvips" -nologo pd_vips_$kernel.png ../output-patch/pd_vips_$kernel-out.png
-  ./rscope -name "$kernel reducev with libvips" -nologo -r pdr_vips_$kernel.png ../output-patch/pdr_vips_$kernel-out.png
-  ./rscope -name "$kernel reducev with libvips (vector path)" -nologo -r pdr_vips_vector_$kernel.png ../output-patch/pdr_vips_vector_$kernel-out.png
+  vips reduceh pd.v pd_vips_$kernel.png 1.003603604 --kernel $kernel
+  vips reducev pdr.v pdr_vips_$kernel.png 1.003603604 --kernel $kernel
+  ./rscope -name "$kernel reduceh with libvips" -nologo pd_vips_$kernel.png ../output/pd_vips_$kernel-out.png
+  ./rscope -name "$kernel reducev with libvips" -nologo -r pdr_vips_$kernel.png ../output/pdr_vips_$kernel-out.png
 done
 
 for i in "${!vips_kernels[@]}"; do 
