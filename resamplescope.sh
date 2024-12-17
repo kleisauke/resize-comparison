@@ -49,3 +49,5 @@ done
 
 ~/Downloads/magic-kernel-sharp/build/opt/bin/resize_image -k 0.996409335 -p -g pd.png pd_mks2021_reference.png
 ./rscope -name "Magic Kernel Sharp 2021 resize (reference)" -nologo pd_mks2021_reference.png ../output/pd_mks2021_reference-out.png
+
+./rscope -name "Magic Kernel Sharp 2013 resize (Rust)" -nologo pd_mks2013_rust.png ../output/pd_mks2013_rust-out.png
