@@ -4,7 +4,7 @@ if [ -d "$PWD/resamplescope" ]; then
   echo "Skip cloning, ResampleScope already exists at $PWD/resamplescope"
   cd $PWD/resamplescope
 else
-  git clone https://github.com/jsummers/resamplescope.git
+  git clone -b alternative-special-colors https://github.com/kleisauke/resamplescope.git
   cd resamplescope && make
   ./rscope -gen
   ./rscope -gen -r
