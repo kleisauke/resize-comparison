@@ -43,3 +43,9 @@ for i in "${!pillow_filters[@]}"; do
 
   ./rscope -name "$filter resize with Pillow" -nologo pd_pillow_$filter.png ../output/pd_pillow_$filter-out.png
 done
+
+~/Downloads/magic-kernel-sharp/build/opt/bin/resize_image -v 1 -k 0.996409335 -p -g pd.png pd_mks2013_reference.png
+./rscope -name "Magic Kernel Sharp 2013 resize (reference)" -nologo pd_mks2013_reference.png ../output/pd_mks2013_reference-out.png
+
+~/Downloads/magic-kernel-sharp/build/opt/bin/resize_image -k 0.996409335 -p -g pd.png pd_mks2021_reference.png
+./rscope -name "Magic Kernel Sharp 2021 resize (reference)" -nologo pd_mks2021_reference.png ../output/pd_mks2021_reference-out.png

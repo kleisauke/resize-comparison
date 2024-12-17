@@ -102,3 +102,10 @@ See [output/](output) directory.
 | :---: |  :---: |
 | ![pd_magick_magickernelsharp2021-out.png](output/pd_magick_magickernelsharp2021-out.png) | ![pd_vips_mks2021-out.png](output/pd_vips_mks2021-out.png) |
 | | Identical to ImageMagick |
+
+### Magic Kernel Sharp 2013 vs Magic Kernel Sharp 2021 (reference)
+
+| Magic Kernel Sharp 2013 | Magic Kernel Sharp 2021 |
+| :---: |  :---: |
+| ![pd_mks2013_reference-out.png](output/pd_mks2013_reference-out.png) | ![pd_mks2021_reference-out.png](output/pd_mks2021_reference-out.png) |
+| | |
