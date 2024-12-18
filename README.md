@@ -94,7 +94,7 @@ See [output/](output) directory.
 | ImageMagick | libvips |
 | :---: |  :---: |
 | ![pd_magick_magickernelsharp2013-out.png](output/pd_magick_magickernelsharp2013-out.png) | ![pd_vips_mks2013-out.png](output/pd_vips_mks2013-out.png) |
-| Seems to be wrongly implemented | |
+| | Identical to ImageMagick |
 
 ### ImageMagick magickernelsharp2021 vs libvips mks2021
 
